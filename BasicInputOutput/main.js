@@ -54,12 +54,22 @@ function downloadClicked(fileName)
 {
     var data = new FormData();
     var fileNameofOutFile = fileName;
-    var outputTextField = document.getElementById("InputText");
-    var inputText = outputTextField.textContent;
+    var outputTextField = document.getElementById("OutputText");
+    var inputText = outputTextField.value;
     data.append("data" , inputText);
     data.append("fileName", fileNameofOutFile);
     var xhr = new XMLHttpRequest();
     xhr.open( 'post', 'writeFile.php', true );
+    xhr.onreadystatechange = function ()
+    {
+        if(xhr.readyState === 4)
+        {
+            if(xhr.status === 200 || xhr.status == 0)
+            {
+                alert("Done!!!");
+            }
+        }
+    }
     xhr.send(data);
 }
 
@@ -76,10 +86,43 @@ function readTextFile(file)
                 var allText = rawFile.responseText;
                 var inputTextField = document.getElementById("InputText");
                 inputTextField.innerHTML = "<pre>"+allText+"</pre>" ;
+                takeRawinput(inputTextField.textContent);
             }
         }
     }
     rawFile.send(null);
+}
+
+var observe;
+if (window.attachEvent) {
+    observe = function (element, event, handler) {
+        element.attachEvent('on'+event, handler);
+    };
+}
+else {
+    observe = function (element, event, handler) {
+        element.addEventListener(event, handler, false);
+    };
+}
+function init () {
+    var text = document.getElementById('text');
+    function resize () {
+        text.style.height = 'auto';
+        text.style.height = text.scrollHeight+'px';
+    }
+    /* 0-timeout to get the already changed text */
+    function delayedResize () {
+        window.setTimeout(resize, 0);
+    }
+    observe(text, 'change',  resize);
+    observe(text, 'cut',     delayedResize);
+    observe(text, 'paste',   delayedResize);
+    observe(text, 'drop',    delayedResize);
+    observe(text, 'keydown', delayedResize);
+
+    text.focus();
+    text.select();
+    resize();
 }
 
 

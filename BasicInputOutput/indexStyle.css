@@ -6,3 +6,10 @@ table, th, td {
 th, td {
     padding: 15px;
 }
+
+#OutputText {
+    border: 0 none white;
+    overflow: auto;
+    padding: 0;
+    outline: none;
+}

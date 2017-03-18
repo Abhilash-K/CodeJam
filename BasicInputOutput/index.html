@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <title>HelloWorld</title>
     <script language="javascript" src="main.js"></script>
+    <script language="javascript" src="process.js"></script>
     <link rel="stylesheet" href="indexStyle.css">
 </head>
-    <body>
+    <body onload="init();">
         <button style="height:20px;width:100px" onclick="readTextFile('A-small-practice.in')">ReadFile</button>
+        <!--<button style="height:20px;width:100px" onclick="downloadClicked('A-small-practice.out')">Process</button>-->
         <button style="height:20px;width:100px" onclick="downloadClicked('A-small-practice.out')">Download</button>
         <table>
             <tr>
@@ -19,7 +21,7 @@
 
                 </td>
                 <td>
-
+                    <textarea  id="OutputText"></textarea>
                 </td>
             </tr>
         </table>
