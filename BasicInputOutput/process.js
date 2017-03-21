@@ -6,20 +6,18 @@ function takeRawinput(text)
     var splitArray = [];
     splitArray = text.split('\n');
     var outputField = document.getElementById("OutputText");
-    outputField.value = "";
+    var outputTextString = "";
     for(var i=0;i<splitArray.length;i++)
     {
-        /*if(outputField.textContent == "")
+        if(outputTextString == "")
         {
-            outputField.textContent += splitArray[i];
+            outputTextString += splitArray[i];
         }
         else
         {
-            outputField.textContent += '\n' + splitArray[i];
-        }*/
-        outputField.value += splitArray[i];
-        outputField.value += '\n';
+            outputTextString += '\n' + splitArray[i];
+        }
     }
-    outputField.value += "done";
-    alert(outputField.textContent);
+    outputField.value = outputTextString;
+    outputField.setAttribute("height", "100px");
 }
