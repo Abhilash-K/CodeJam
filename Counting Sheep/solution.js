@@ -1,5 +1,7 @@
 /**
  * Created by Abhilash K on 3/26/2017.
+ *
+ * Answer to https://code.google.com/codejam/contest/6254486/dashboard
  */
 
 function findSolution (inputArray)
@@ -50,7 +52,7 @@ function findSolution (inputArray)
             }
             multiplicationFactor = (currentWorkingNum / N[j]);
             multiplicationFactor++;
-            currentWorkingNum = N[j]+multiplicationFactor;
+            currentWorkingNum = N[j]*multiplicationFactor;
         }
 
         if((j+1) != N.length)
