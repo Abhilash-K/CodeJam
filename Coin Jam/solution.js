@@ -15,7 +15,7 @@ function findSolution(inputArray)
     {
         solutionString += "Case #" + String(j +1) + ": ";
 
-        
+
 
         if((j+1) != S.length)
         {
