@@ -17,6 +17,7 @@ function findSolution(inputArray)
     var checkedNumLim = 2;
     var checkedNumLimParsed = 2;
     var currentBinary = "";
+    var baseMultiplier = 1;
 
     for(var i=1;i<=numtestCases;i++)
     {
@@ -37,6 +38,7 @@ function findSolution(inputArray)
             checkedNumLim = 2;
             while (!isJamCoin)
             {
+                isPrime = true;
                 while (isPrime)
                 {
                     checkedNumLim++;
@@ -58,6 +60,14 @@ function findSolution(inputArray)
                 if(currentBinary[(currentBinary.length - 1)] != "1")
                 {
                     continue;
+                }
+                for(var m = 3; m <= 10; m++)
+                {
+                    baseMultiplier = 1;
+                    while()
+                    {
+
+                    }
                 }
             }
 
