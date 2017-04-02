@@ -5,6 +5,27 @@
 function findSolution(inputArray)
 {
     var numtestCases = inputArray[0];
+    var solutionString = "";
+    var T = [];
+    var splitT = [];
+    var numDigits = [];
+    var numTestCases = [];
+
+
+    for(var i=1;i<=numtestCases;i++)
+    {
+        T[i-1] = inputArray[i];
+        splitT = String(inputArray[i]).split(" ");
+        numDigits[i-1] = splitT[0];
+        numTestCases[i-1] = splitT[1];
+    }
+
+    return solutionString;
+}
+
+function findSolutionOldlogic(inputArray)
+{
+    var numtestCases = inputArray[0];
     var T = [];
     var splitT = [];
     var numDigits = [];
@@ -80,7 +101,6 @@ function findSolution(inputArray)
                 {
                     continue;
                 }
-
                 for (var m = 3; m <= 10; m++)
                 {
                     falsePositive = true;
@@ -127,7 +147,7 @@ function findSolution(inputArray)
                 }
                 if(falsePositive == false)
                 {
-                    solutionString += currentBinary;
+                    solutionString += currentBinary + " " + checkedNumLim;
                     for(var o = 0; o<listOfDivisors.length;o++)
                     {
                         solutionString += " " + listOfDivisors[o];
