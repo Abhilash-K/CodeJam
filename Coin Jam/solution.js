@@ -2,7 +2,7 @@
  * Created by Abhilash K on 3/26/2017.
  */
 
-function findSolution(inputArray)
+/*function findSolution(inputArray)
 {
     var numtestCases = inputArray[0];
     var solutionString = "";
@@ -21,9 +21,9 @@ function findSolution(inputArray)
     }
 
     return solutionString;
-}
+}*/
 
-function findSolutionOldlogic(inputArray)
+function findSolution(inputArray)
 {
     var numtestCases = inputArray[0];
     var T = [];
@@ -43,6 +43,7 @@ function findSolutionOldlogic(inputArray)
     var falsePositive = true;
     var listOfDivisors = [];
     var currentDivisor = 0;
+    var initialLimit = "";
 
     for(var i=1;i<=numtestCases;i++)
     {
@@ -57,7 +58,13 @@ function findSolutionOldlogic(inputArray)
         solutionString += "Case #" + String(j +1) + ":\n";
         currentRequiredDigits = Number(numDigits[j]);
         currentTestCases = Number(numTestCases[j]);
-        checkedNumLim = 2;
+        initialLimit += "1";
+        for(var p=0;p<currentRequiredDigits - 2;p++)
+        {
+            initialLimit += "0";
+        }
+        initialLimit += "1";
+        checkedNumLim = parseInt(initialLimit, 2);;
         for(var k=0;k<currentTestCases;k++)
         {
             isJamCoin = false;
@@ -69,7 +76,8 @@ function findSolutionOldlogic(inputArray)
                 {
                     checkedNumLim++;
                     currentDivisor = 0;
-                    for (var l = 2; l <= checkedNumLim / 2; l++)
+                    //for (var l = 2; l <= checkedNumLim / 2; l++)
+                    for (var l = 2; l <= 10; l++)
                     {
                         if (checkedNumLim % l == 0)
                         {
@@ -111,7 +119,8 @@ function findSolutionOldlogic(inputArray)
                         sumOfBinary += currentBinary[n] * currentMultiplier;
                     }
                     currentDivisor = 0;
-                    for (var p = 2; p <= Math.sqrt(sumOfBinary); p++)
+                    //for (var p = 2; p <= Math.sqrt(sumOfBinary); p++)
+                    for (var p = 2; p <= 10; p++)
                     {
                         if (sumOfBinary % p == 0)
                         {
@@ -128,26 +137,10 @@ function findSolutionOldlogic(inputArray)
                     {
                         break;
                     }
-                    /*if(currentDivisor == 0)
-                    {
-                        console.log("error");
-                        for (var p = 2; p <= Math.sqrt(sumOfBinary); p++)
-                        {
-                            if (sumOfBinary % p == 0)
-                            {
-                                falsePositive = false;
-                                if(currentDivisor == 0)
-                                {
-                                    currentDivisor = p;
-                                }
-                                break;
-                            }
-                        }
-                    }*/
                 }
                 if(falsePositive == false)
                 {
-                    solutionString += currentBinary + " " + checkedNumLim;
+                    solutionString += currentBinary;
                     for(var o = 0; o<listOfDivisors.length;o++)
                     {
                         solutionString += " " + listOfDivisors[o];
